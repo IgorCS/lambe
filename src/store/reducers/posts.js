@@ -3,7 +3,8 @@ import {
     ADD_COMMENT,
     SET_POSTS,
     CREATING_POST,
-    POST_CREATE
+    POST_CREATED
+    //CREATING_POST POST_CREATE
 } from '../actions/actionTypes'
  
 const initialState = {
@@ -46,7 +47,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isUploading: true
             }
-        case POST_CREATE:
+        case POST_CREATED:
                 return{
                     ...state,
                     isUploading: false

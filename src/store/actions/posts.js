@@ -60,9 +60,9 @@ export const addPost = post => {
                        //console.log(res.data)                        
                        dispatch(fetchPosts()) 
                        dispatch(postCreated())
-            })
+                })
+        })
     }
-
     
     // return  {
     //     type: ADD_POST,

@@ -31,7 +31,7 @@ class AddPhoto extends Component {
                 image: null,
                 comment: ''
             })
-            this.props.navigatin.navigate('Feed')
+            this.props.navigation.navigate('Feed')
         }
     }
 
