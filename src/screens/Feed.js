@@ -3,8 +3,18 @@ import { connect } from 'react-redux'
 import { StyleSheet, FlatList, View } from 'react-native'
 import Header from '../components/Header'
 import Post from '../components/Post'
+import {fetchPosts} from '../store/actions/posts'
 
 class Feed extends Component {
+    componentDidMount = () => {
+
+        // this.timerID = setInterval(
+        //     () => this.tick(),
+        //     1000
+        //   );
+        this.props.onFetchPosts()
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -34,5 +44,11 @@ const mapStateToProps = ({ posts }) => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return{
+        onFetchPosts: () => dispatch(fetchPosts())
+    }
+}
 
-export default connect(mapStateToProps)(Feed)
+
+export default connect(mapStateToProps,mapDispatchToProps)(Feed)
