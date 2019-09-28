@@ -16,35 +16,25 @@ class Register extends Component {
         password: ''
     }
 
-    componentDidUpdate = prevProps => {
-        if (prevProps.isLoading && !this.props.isLoading) {
-            this.setState({
-                name: '',
-                email: '',
-                password: ''
-            })
-            this.props.navigation.navigate('Profile') // Feed
-        }
-    }
-
+   
     render() {
         return (
-            <View style={styles.container}>
+           <View style={styles.container}>
                 <TextInput placeholder='Nome' style={styles.input}
                     autoFocus={true} value={this.state.name}
-                    onChangeText={name => this.setState({ name })} />
+                    onChangeText={name => this.setState({ name })}/>
                 <TextInput placeholder='Email' style={styles.input}
-                    keyboardType='email-address' value={this.state.email}
-                    onChangeText={email => this.setState({ email })} />
+                    autoFocus={true} value={this.state.email}
+                    onChangeText={email => this.setState({ email })}/>
                 <TextInput placeholder='Senha' style={styles.input}
-                    secureTextEntry={true} value={this.state.password}
-                    onChangeText={password => this.setState({ password })} />
+                    autoFocus={true} value={this.state.password}
+                    onChangeText={password => this.setState({ password })}/>
                 <TouchableOpacity 
-                    onPress={() => { this.props.onCreateUser(this.state) }} 
+                    onPress={() => {this.props.onCreateUser(this.state)}} 
                     style={styles.buttom}>
                     <Text style={styles.buttomText}>Salvar</Text>
                 </TouchableOpacity>
-            </View>
+           </View> 
         )
     }
 }
@@ -58,34 +48,27 @@ const styles = StyleSheet.create({
     buttom: {
         marginTop: 30,
         padding: 10,
-        backgroundColor: '#4286f4'
+        backgroundColor: '#4286f4'   
     },
-    buttomText: {
+    buttomText :{
         fontSize: 20,
         color: '#FFF'
     },
     input: {
+        //...commonStyle.input
         marginTop: 20,
         width: '90%',
         backgroundColor: '#EEE',
         height: 40,
-        borderWidth: 1,
         borderColor: '#333',
         paddingLeft: 15
     }
 })
-
-const mapStateToProps = ({ user }) => {
-    return {
-        isLoading: user.isLoading
-    }
-}
 
 const mapDispatchToProps = dispatch => {
     return {
         onCreateUser: user => dispatch(createUser(user))
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
-// export default Register
+export default connect(null, mapDispatchToProps)(Register)
+//export default Register
