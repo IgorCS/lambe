@@ -1,47 +1,12 @@
-// import {
-//     // SET_POSTS,
-//     // ADD_COMMENT,
-//     // CREATING_POST,
-//     // POST_CREATED
-//     ADD_POST, ADD_COMMENT
-// } from './actionTypes'
-// // import { setMessage } from './message'
-// import axios from 'axios'
-
-// export const addPost = post => {
-//     return dispatch => {
-//         axios.post('/posts.json', { ...post })
-//             .catch(err => console.log(err))
-//             .then(res => console.log(res.data))
-//     }
-//     // return  {
-//     //     type: ADD_POST,
-//     //     payload: post
-//     // }
-// }
-
-// export const addComment = payload => {
-//     return {
-//         type: ADD_COMMENT,
-//         payload: payload
-//     }
-// }
-
 import {
     POST_CREATED,CREATING_POST, ADD_COMMENT, SET_POSTS
 } from './actionTypes'
-// import { setMessage } from './message'
+import { setMessage } from './message'
 import axios from 'axios'
 
 export const addPost = post => {
 
-    // return dispatch => {
-    //     axios.post('/posts.json', { ...post })
-    //         .catch(err => console.log(err))
-    //         .then(res => console.log(res.data))
-    // }
-
-    return dispatch => {
+    return (dispatch, getState) => {
        dispatch(creatingPost())
        axios({
            url: 'uploadImage',
@@ -50,44 +15,56 @@ export const addPost = post => {
            data: {
                image: post.image.base64
            }
-       })
-            .catch(err => console.log(err))
+        })
+            .catch(err => {
+                dispatch(setMessage({
+                    title: 'Erro',
+                    text: 'Ops!!!Algo Aconteceu...'
+                }))
+            })
             .then(resp => {
                 post.image = resp.data.imageUrl
-                axios.post('/posts.json', { ...post })
-                    .catch(err => console.log(err))
+                axios.post(`/posts.json?auth=${getState().user.token}`, { ...post })
+                    .catch(err => {
+                        dispatch(setMessage({
+                            title: 'Erro',
+                            text: err
+                       }))
+                    })
                     .then(res => {
-                       //console.log(res.data)                        
                        dispatch(fetchPosts()) 
-                       dispatch(postCreated())
+                       dispatch(postCreated())                       
                 })
-        })
-    }
-    
-    // return  {
-    //     type: ADD_POST,
-    //     payload: post
-    // }
+            })
+    }  
 }
 
 export const addComment = payload => {
-    return dispatch => {
+    return (dispatch,getState)=> {
         axios.get(`/posts/${payload.postId}.json`)
-            .catch(err => console.log(err))
+            .catch(err => {
+                dispatch(setMessage({
+                    title: 'Erro',
+                    text: 'Ops!!!Algo Aconteceu...'
+                }))
+            })
             .then(res => {
                 const comments = res.data.comments || []
                 comments.push(payload.comment)
-                axios.patch(`/posts/${payload.postId}.json`,{comments})
-                    .catch(err => console.log(err))
+                //?auth=${getState().user.token}`, { ...post })
+                axios.patch(`/posts/${payload.postId}.json?auth=${getState().user.token}`,{comments})
+                    .catch(err => {
+                        dispatch(setMessage({
+                            title: 'Erro',
+                            text: 'Ops!!!Algo Aconteceu...'
+                        }))
+                    })
                     .then(res => {
                         dispatch(fetchPosts())
                     })
             })
     }
-    // return {
-    //     type: ADD_COMMENT,
-    //     payload: payload
-    // }
+    
 }
 
 export const setPosts = posts => {
@@ -100,7 +77,12 @@ export const setPosts = posts => {
 export const fetchPosts = () => {
     return dispatch => {
         axios.get('/posts.json')
-            .catch(err => console.log(err))
+            .catch(err => {
+                dispatch(setMessage({
+                    title: 'Erro',
+                    text: 'Ops!!!Algo Aconteceu...'
+                }))
+            })
             .then(res => {
                 const rawPosts=res.data
                 const posts = []

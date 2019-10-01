@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 //import { createAppContainer } from '@react-navigation/native';
 //import { createStackNavigator } from 'react-navigation-stack';
 
+import Splash from './screens/Splash'
 import Feed from './screens/Feed'
 import AddPhoto from './screens/AddPhoto'
 import Profile from './screens/Profile'
@@ -24,7 +25,7 @@ const authRouter = createStackNavigator({
     initialRouteName: 'Login'
 })
 
-const loginProOrfileRouter = createSwitchNavigator({
+const loginOrProfileRouter = createSwitchNavigator({
     Profile: Profile,
     Auth: authRouter
 },{
@@ -52,24 +53,36 @@ const MenuRoutes = createBottomTabNavigator({
     },
     Profile: {
         name: 'Profile',
-        screen: loginProOrfileRouter,
+        screen: loginOrProfileRouter,
         navigationOptions: {
             title: 'Profile',
             tabBarIcon: ({ tintColor }) =>
                 <Icon name='user' size={30} color={tintColor} />
         }
     }
-},
-{        
+},{        
     tabBarOptions: {
         showLabel: false,
     },
     initialRouteName: 'Feed',
 
+});
+
+const MenuConfig = {
+    initialRouteName: 'Feed',
+    tabBarOptions: {
+        showLabel: false,
     }
-);
+}
 
 //console.disableYellowBox = true;
-const MenuNavigator = createAppContainer(MenuRoutes)
+const MenuNavigator = createAppContainer(MenuRoutes, MenuConfig)
 
-export default MenuNavigator
+const SplashRouter = createSwitchNavigator({
+    Splash: Splash,
+    App: MenuNavigator,
+}, {
+    initialRouteName: 'Splash'
+})
+
+export default createAppContainer(SplashRouter)
