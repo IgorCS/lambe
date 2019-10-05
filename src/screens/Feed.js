@@ -51,4 +51,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 
+//Disable React Native yellow box warnings
+console.disableYellowBox = true;
+
 export default connect(mapStateToProps,mapDispatchToProps)(Feed)
