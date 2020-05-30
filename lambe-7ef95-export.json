@@ -1,0 +1,38 @@
+{
+  "posts" : {
+    "-M7Pv78ERZFE0YmiMKrt" : {
+      "comments" : [ {
+        "comment" : "Opa ..legal",
+        "nickname" : "Igor"
+      }, {
+        "comment" : "😃",
+        "nickname" : "Igor"
+      }, {
+        "comment" : "Jhhjj",
+        "nickname" : "Igor"
+      } ],
+      "email" : "igor@mail.com",
+      "id" : 0.1954256022773011,
+      "image" : "https://firebasestorage.googleapis.com/v0/b/lambe-7ef95.appspot.com/o/posts%2F4a6a160a-1096-4929-b60d-392e0f9497c7.jpg?alt=media&token=4a6a160a-1096-4929-b60d-392e0f9497c7",
+      "nickname" : "Igor"
+    },
+    "-M7U2scM70612PWe8Vxv" : {
+      "comments" : [ {
+        "comment" : "Atenção..denuncie",
+        "nickname" : "Igor"
+      } ],
+      "email" : "igor@mail.com",
+      "id" : 0.968289363984573,
+      "image" : "https://firebasestorage.googleapis.com/v0/b/lambe-7ef95.appspot.com/o/posts%2F9a5215bc-7158-4d15-98f1-1f79c62b528a.jpg?alt=media&token=9a5215bc-7158-4d15-98f1-1f79c62b528a",
+      "nickname" : "Igor"
+    }
+  },
+  "users" : {
+    "0dqPnmHOKtTehym8XO5hUqmragr1" : {
+      "name" : "IgorCS"
+    },
+    "g7NjjnlXrVhL3lhwcyaFg7qz0rf1" : {
+      "name" : "Igor"
+    }
+  }
+}

@@ -39,9 +39,9 @@ export const createUser = user => {
             })
             .then(res => {
                 if (res.data.localId) {
-                    axios.put(`/users/${res.data.localId}.json`, {
-                        name: user.name
-                    })
+                        axios.put(`/users/${res.data.localId}.json`, {
+                            name: user.name
+                        })
                         .catch(err => {
                                 dispatch(setMessage({
                                 title: 'Erro',

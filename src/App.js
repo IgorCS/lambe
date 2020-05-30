@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import {Alert} from 'react-native'
+import { Alert } from 'react-native'
 import Navigator from './Navigator'
 import { connect } from 'react-redux'
-import {setMessage} from './store/actions/message'
+import { setMessage } from './store/actions/message'
 
 class App extends Component {
 

@@ -34,8 +34,8 @@ class Feed extends Component {
                 <FlatList
                     data={this.props.posts}
                     keyExtractor={item => `${item.id}`}
-                    renderItem={({ item }) => 
-                        <Post key={item.id} {...item} />}/>                
+                    renderItem={ ({ item }) =>  <Post key={item.id} {...item} /> }
+                />                
             </View>
         )
     }

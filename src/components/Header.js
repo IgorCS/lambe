@@ -12,7 +12,7 @@ import icon from '../../assets/imgs/icon.png'
 
 class Header extends Component {
     render() {
-        const name = this.props.name || 'Anonymous'
+        const name = this.props.name || 'Faça o login'
         const gravatar = this.props.email ?
             <Gravatar options={{ email:this.props.email, secure: true }}
                 style={styles.avatar}/> : null

@@ -40,7 +40,7 @@ class AddComment extends Component {
                         onChangeText={comment => this.setState({ comment })}
                         onSubmitEditing={this.handleAddComment} />
                     <TWF onPress={() => this.setState({ editMode: false })}>
-                        <Icon name='times' size={20} color='#555' />
+                        <Icon name='times' size={30} color='#555' />
                     </TWF>
                 </View>
             )

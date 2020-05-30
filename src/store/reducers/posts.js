@@ -1,6 +1,7 @@
 import { 
     //ADD_POST,
     ADD_COMMENT,
+    ADD_LIKE,
     SET_POSTS,
     CREATING_POST,
     POST_CREATED
@@ -42,16 +43,27 @@ const reducer = (state = initialState, action) => {
                     return post
                 })
             }
+        case ADD_LIKE:
+            return{
+                ...state,
+                posts: state.posts.map(post=> {
+                    if(post.id === action.payload.postId) {                        
+                        post.likes=[action.payload.like]                        
+                    }
+                    return post
+                })
+            }
         case CREATING_POST:
             return{
                 ...state,
                 isUploading: true
             }
+
         case POST_CREATED:
-                return{
-                    ...state,
-                    isUploading: false
-                }
+            return{
+                ...state,
+                isUploading: false
+            }
 
         default: 
             return state
