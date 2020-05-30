@@ -30,6 +30,7 @@ class AddLike extends Component {
 
     render() {
         return(
+
             <View style = {styles.container}>
                 {/*<Button 
                     onPress={() => Alert.alert('Button with adjusted color pressed')}
@@ -49,6 +50,7 @@ class AddLike extends Component {
                     style={styles.buttom}>
                     <Text style={styles.buttomText}>Curtir</Text>
                 </TouchableOpacity>
+                
             </View>
         )       
     }
