@@ -29,7 +29,6 @@ class AddLike extends Component {
     }
 
     render() {
-        //vamos ajustar o estado do redux
         return(
             <View style = {styles.container}>
                 {/*<Button 
@@ -48,8 +47,8 @@ class AddLike extends Component {
                     onChangeText={like => this.setState({ like })}
                     onPress={this.handleAddLike} 
                     style={styles.buttom}>
-                    <Text style={styles.buttomText}>Curtir</Text>
-                </TouchableOpacity>                
+                    <Text style={styles.buttomText}> Curtir/Descurtir </Text>
+                </TouchableOpacity>
             </View>
         )       
     }
