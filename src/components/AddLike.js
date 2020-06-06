@@ -47,7 +47,7 @@ class AddLike extends Component {
                     onChangeText={like => this.setState({ like })}
                     onPress={this.handleAddLike} 
                     style={styles.buttom}>
-                    <Text style={styles.buttomText}> Curtir/Descurtir </Text>
+                    <Text style={styles.buttomText}> Curtir - Descurtir </Text>
                 </TouchableOpacity>
             </View>
         )       
